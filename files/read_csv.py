@@ -1,6 +1,7 @@
 from sys import argv
 from csv import DictReader
 
+
 def csv_dict_reader(file_obj):
     """
     Read a CSV file using csv.DictReader
