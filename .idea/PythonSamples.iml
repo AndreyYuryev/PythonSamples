@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Coursera" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/files" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/pdf" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
