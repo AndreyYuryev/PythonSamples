@@ -3,10 +3,6 @@ from tkinter import messagebox
 import pickle
 
 
-
-
-
-
 Window = tk.Tk()
 Window.geometry('400x250')
 Window.title("Login in system")

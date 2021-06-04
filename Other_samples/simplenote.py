@@ -1,4 +1,4 @@
-
+import simplenote
 
 user = 'yuryev@yandex.ru'
 password = 'Simplenote2019'
