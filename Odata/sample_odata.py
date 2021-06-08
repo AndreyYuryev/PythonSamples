@@ -1,26 +1,40 @@
 import pyodata
 import requests
 from pyodata.v2.service import GetEntitySetFilter as sef
+from pyodata.v2.model import PolicyFatal, PolicyWarning, PolicyIgnore, ParserError, Config
 
 
 # SERVICE_URL = 'http://erpcixpl01:8001/sap/opu/odata/sap/ZCS_EBGCP_SRV/'
-SERVICE_URL = 'https://psl-e.one-erp.telekom.de/sap/opu/odata/SAP/ZPSL_GWSAMPLE_BASIC_SRV/$metadata?sap-client=400&sap-language=EN'
+SERVICE_URL = 'http://psl-e.one-erp.telekom.de/sap/opu/odata/SAP/ZPSL_GWSAMPLE_BASIC_SRV'
 
 session = requests.Session()
 session.auth = ('44544331', 'Fhm9Z2478p!EW')
+session.param = {'sap-client': '400', 'sap-language': 'EN', 'format': 'xml'}
+
+namespaces = {
+    'atom': 'http://www.w3.org/2005/Atom',
+    'app': 'http://www.w3.org/2007/app'
+}
+
+custom_config = Config(xml_namespaces=namespaces,
+                       default_error_policy=PolicyFatal(),
+                       custom_error_policies={
+         ParserError.ANNOTATION: PolicyWarning(),
+         ParserError.ASSOCIATION: PolicyIgnore()
+    })
 
 
-# response = requests.get(SERVICE_URL, session)
+response = requests.get(SERVICE_URL, session)
 # print(response.status_code)     # To print http response code
 # print(response.text)
 # r = response.text.json()
-services = pyodata.Client(SERVICE_URL, session)
+services = pyodata.Client(SERVICE_URL, session, config=custom_config)
 
-bp_request = services.entity_sets.BusinessPartnerSet.get_entities().select('BusinessPartner').execute()
-bp_request = bp_request.filter("BusinessPartnerID EQ '0100000000'")
+bp_request = services.entity_sets.BusinessPartnerSet.get_entities()
+#bp_request = bp_request.filter("BusinessPartnerID EQ '0100000000'")
 # print(bp_request)
-for itm in bp_request.execute():
-    print(itm)
+#for itm in bp_request.execute():
+#    print(itm)
 # bp_request = bp_request.filter(sef.and_(bp_request.Address['City'] == 'Waldorf', bp_request.
 #                                         Address['PostalCode'] == '69190'))
 # for bp in bp_request.execute():
