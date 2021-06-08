@@ -5,11 +5,11 @@ from pyodata.v2.model import PolicyFatal, PolicyWarning, PolicyIgnore, ParserErr
 
 
 # SERVICE_URL = 'http://erpcixpl01:8001/sap/opu/odata/sap/ZCS_EBGCP_SRV/'
-SERVICE_URL = 'http://psl-e.one-erp.telekom.de/sap/opu/odata/SAP/ZPSL_GWSAMPLE_BASIC_SRV'
+SERVICE_URL = 'http://psl-e.one-erp.telekom.de/sap/opu/odata/SAP/ZPSL_GWSAMPLE_BASIC_SRV/?sap-client=400&sap-language=EN'
 
 session = requests.Session()
 session.auth = ('44544331', 'Fhm9Z2478p!EW')
-session.param = {'sap-client': '400', 'sap-language': 'EN', 'format': 'xml'}
+# session.param = {'sap-client': '400', 'sap-language': 'EN', 'format': 'xml'}
 
 namespaces = {
     'atom': 'http://www.w3.org/2005/Atom',
