@@ -10,7 +10,7 @@ SERVICE_URL = 'http://psl-e.one-erp.telekom.de/sap/opu/odata/SAP/ZPSL_GWSAMPLE_B
 session = requests.Session()
 # session.auth = ('44544331', 'Fhm9Z2478p!EW')
 session.auth = ('44544331', 'xmXxPj6GXZHa!')
-session.param = {'sap-client': '200', 'sap-language': 'EN'}
+session.params = {'sap-client': '200', 'sap-language': 'EN'}
 
 namespaces = {
     'atom': 'http://www.w3.org/2005/Atom',
