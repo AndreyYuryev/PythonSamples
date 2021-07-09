@@ -11,6 +11,7 @@ session = requests.Session()
 # session.auth = ('44544331', 'Fhm9Z2478p!EW')
 session.auth = ('44544331', 'E8fRUJKohX3A!')
 session.params = {'sap-client': '300', 'sap-language': 'EN'}
+session.verify = False
 
 namespaces = {
     'atom': 'http://www.w3.org/2005/Atom',
@@ -31,7 +32,7 @@ custom_config = Config(xml_namespaces=namespaces,
 # r = response.text.json()
 services = pyodata.Client(url=SERVICE_URL,connection=session, config=custom_config)
 
-bp_request = services.entity_sets.UserSet.get_entities().execute()
+order = services.entity_sets.PMOrderSet.get_entities().execute()
 #bp_request = bp_request.filter("BusinessPartnerID EQ '0100000000'")
 # print(bp_request)
 #for itm in bp_request.execute():
@@ -54,4 +55,6 @@ bp_request = services.entity_sets.UserSet.get_entities().execute()
 # print(order._entity_key._proprties.items())
 # print(order._entity_key.items())
 print('test')
+for item in order:
+    print(item)
 
