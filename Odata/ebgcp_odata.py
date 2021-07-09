@@ -31,7 +31,7 @@ custom_config = Config(xml_namespaces=namespaces,
 # r = response.text.json()
 services = pyodata.Client(url=SERVICE_URL,connection=session, config=custom_config)
 
-bp_request = services.entity_sets.BusinessPartnerSet.get_entities().execute()
+bp_request = services.entity_sets.UserSet.get_entities().execute()
 #bp_request = bp_request.filter("BusinessPartnerID EQ '0100000000'")
 # print(bp_request)
 #for itm in bp_request.execute():
