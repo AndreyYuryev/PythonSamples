@@ -1,7 +1,7 @@
 
 
 def main():
-    pass
+    print("This is main")
 
 
 if __name__ == '__main__':
