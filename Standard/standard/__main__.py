@@ -1,7 +1,8 @@
+from .text import main_string
 
 
 def main():
-    print("This is main")
+    main_string()
 
 
 if __name__ == '__main__':
